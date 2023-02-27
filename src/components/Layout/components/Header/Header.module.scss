@@ -98,3 +98,15 @@
     transform: translateY(-50%);
   }
 }
+
+.action {
+  display: flex;
+}
+
+.more-btn {
+  font-style: 2rem;
+  margin-left: 28px;
+  padding: 4px 8px;
+  background-color: transparent;
+  cursor: pointer;
+}
