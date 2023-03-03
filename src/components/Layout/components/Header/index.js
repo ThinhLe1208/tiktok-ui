@@ -1,16 +1,13 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
   faSpinner,
-  faMagnifyingGlass,
   faEllipsisVertical,
   faEarthAsia,
   faCircleQuestion,
   faKeyboard,
-  faCloudUpload,
-  faMessage,
   faUser,
   faCoins,
   faGear,
@@ -26,6 +23,8 @@ import styles from "./Header.module.scss";
 import images from "~/assets/images";
 import AccountItem from "~/components/AccountItem";
 import Menu from "~/components/Popper/Menu";
+import { InboxIcon, MessageIcon, SearchIcon, UploadIcon } from "~/components/Icons";
+import Image from "~/components/Image";
 
 const cx = classNames.bind(styles);
 
@@ -62,15 +61,16 @@ const MENU_ITEM = [
 ];
 
 function Header() {
-  const [searchResult, setSearchResult] = useState([]);
+  console.log("Header render");
 
+  // const [searchResult, setSearchResult] = useState([]);
   const currentUser = true;
 
-  useEffect(() => {
-    setInterval(() => {
-      setSearchResult([]);
-    }, 0);
-  }, []);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setSearchResult([]);
+  //   }, 0);
+  // }, []);
 
   // Handle logic
   const handleMenuChange = (menuItem) => {
@@ -115,7 +115,8 @@ function Header() {
         <div className={cx("search")}>
           <HeadlessTippy
             interactive
-            visible={searchResult.length > 0}
+            // {searchResult.length > 0}
+            visible={false}
             render={(attrs) => (
               <div className={cx("search-result")} tabIndex="-1" {...attrs}>
                 <PopperWrapper>
@@ -134,7 +135,7 @@ function Header() {
           </button>
           <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
           <button className={cx("search-btn")}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <SearchIcon />
           </button>
         </div>
 
@@ -142,9 +143,20 @@ function Header() {
           {currentUser ? (
             <div className={cx("current-user")} placement="bottom">
               <>
-                <Tippy content="Uploaded video" delay={[0, 200]}>
+                <Tippy content="Uploaded video" delay={[0, 50]} placement="bottom">
                   <button className={cx("action-btn")}>
-                    <FontAwesomeIcon icon={faCloudUpload} />
+                    <UploadIcon />
+                  </button>
+                </Tippy>
+                <Tippy content="Message" delay={[0, 50]} placement="bottom">
+                  <button className={cx("action-btn")}>
+                    <MessageIcon />
+                  </button>
+                </Tippy>
+                <Tippy content="Inbox" delay={[0, 50]} placement="bottom">
+                  <button className={cx("action-btn")}>
+                    <InboxIcon />
+                    <span className={cx("badge")}>12</span>
                   </button>
                 </Tippy>
               </>
@@ -158,10 +170,11 @@ function Header() {
 
           <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
             {currentUser ? (
-              <img
+              <Image
                 className={cx("user-avatar")}
-                src="https://img.lovepik.com/free-png/20211129/lovepik-girl-cartoon-hand-drawn-cute-illustration-avatar-png-image_401193454_wh1200.png"
+                src="ttps://img.lovepik.com/free-png/20211129/lovepik-girl-cartoon-hand-drawn-cute-illustration-avatar-png-image_401193454_wh1200.png"
                 alt="user-avtar"
+                fallback="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
               />
             ) : (
               <button className={cx("more-btn")}>
