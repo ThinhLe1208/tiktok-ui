@@ -1,9 +1,6 @@
-// import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleXmark,
-  faSpinner,
   faEllipsisVertical,
   faEarthAsia,
   faCircleQuestion,
@@ -15,16 +12,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import HeadlessTippy from "@tippyjs/react/headless";
 
 import Button from "~/components/Button";
-import { Wrapper as PopperWrapper } from "~/components/Popper";
 import styles from "./Header.module.scss";
 import images from "~/assets/images";
-import AccountItem from "~/components/AccountItem";
 import Menu from "~/components/Popper/Menu";
-import { InboxIcon, MessageIcon, SearchIcon, UploadIcon } from "~/components/Icons";
+import { InboxIcon, MessageIcon, UploadIcon } from "~/components/Icons";
 import Image from "~/components/Image";
+import Search from "~/components/Search";
 
 const cx = classNames.bind(styles);
 
@@ -63,14 +58,7 @@ const MENU_ITEM = [
 function Header() {
   console.log("Header render");
 
-  // const [searchResult, setSearchResult] = useState([]);
   const currentUser = true;
-
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setSearchResult([]);
-  //   }, 0);
-  // }, []);
 
   // Handle logic
   const handleMenuChange = (menuItem) => {
@@ -112,32 +100,7 @@ function Header() {
       <div className={cx("inner")}>
         <img src={images.logo} alt="tiktok-logo" />
 
-        <div className={cx("search")}>
-          <HeadlessTippy
-            interactive
-            // {searchResult.length > 0}
-            visible={false}
-            render={(attrs) => (
-              <div className={cx("search-result")} tabIndex="-1" {...attrs}>
-                <PopperWrapper>
-                  <h4 className={cx("search-title")}>Accounts</h4>
-                  <AccountItem />
-                  <AccountItem />
-                  <AccountItem />
-                </PopperWrapper>
-              </div>
-            )}
-          >
-            <input placeholder="Search accounts and videos" spellCheck={false} />
-          </HeadlessTippy>
-          <button className={cx("clear")}>
-            <FontAwesomeIcon icon={faCircleXmark} />
-          </button>
-          <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
-          <button className={cx("search-btn")}>
-            <SearchIcon />
-          </button>
-        </div>
+        <Search />
 
         <div className={cx("action")}>
           {currentUser ? (
@@ -172,7 +135,7 @@ function Header() {
             {currentUser ? (
               <Image
                 className={cx("user-avatar")}
-                src="ttps://img.lovepik.com/free-png/20211129/lovepik-girl-cartoon-hand-drawn-cute-illustration-avatar-png-image_401193454_wh1200.png"
+                src="https://img.lovepik.com/free-png/20211129/lovepik-girl-cartoon-hand-drawn-cute-illustration-avatar-png-image_401193454_wh1200.png"
                 alt="user-avtar"
                 fallback="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
               />
