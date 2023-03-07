@@ -14,9 +14,12 @@
 
   input {
     flex: 1;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 22px;
     height: 100%;
     color: rgba(22, 24, 35, 1);
-    font-style: 1.6rem;
     background-color: transparent;
     caret-color: var(--primary);
   }
