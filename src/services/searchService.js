@@ -1,4 +1,4 @@
-import * as request from "~/utils/request";
+import * as httpRequest from "~/utils/httpRequest";
 
 /**
  * Nhận các query parameters, call API thông qua custom get của request và trả về data
@@ -9,7 +9,7 @@ import * as request from "~/utils/request";
 export const search = async (q, type = "less") => {
   try {
     // get() là custom function tự tạo trong request, requsest là object module đc import
-    const res = await request.get(`users/search`, {
+    const res = await httpRequest.get(`users/search`, {
       params: {
         q,
         type,
