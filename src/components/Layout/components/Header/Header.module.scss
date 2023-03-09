@@ -3,11 +3,16 @@
   --search-padding-x: 16px;
   --search-btn-width: 52px;
 
-  width: 100%;
-  height: var(--default-layout-height-header, 60px);
-  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
   display: flex;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--default-layout-height-header, 60px);
+  background-color: var(--white);
+  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+  z-index: 10;
 }
 
 .inner {
